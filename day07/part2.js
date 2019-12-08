@@ -12,7 +12,6 @@ const getOperandValue = (mode, index, list) => {
   return mode == 0 ?  list[list[index]] :  list[index];
 }
 
-
 class Amplifier {
   constructor(instructions, input) {
     this.pc = 0;
@@ -22,21 +21,16 @@ class Amplifier {
     this.output;
   }
 
-
   calculateInstructions() {
-    //console.log(instructions); 
     let index = this.pc;
     let output = 0;
     while (true) {
       if (index == this.instructions.length -1 || this.instructions[index] == 99) return false;
-      //console.log('not breaking', instructions[index]);
       let opcode = getOpcode(this.instructions[index]);
-      //console.log(index, opcode, instructions[index], instructions.join(' '));
       if (opcode[4] == 1 || opcode[4] == 2 || opcode[4] == 7 || opcode[4] == 8){
         let value1 = getOperandValue(opcode[2], index + 1, this.instructions);
         let value2 = getOperandValue(opcode[1], index + 2, this.instructions);
         let finalPosition = opcode[0] == 0 ? this.instructions[index + 3] : index + 3;
-        //console.log('calculated values are', value1, value2, finalPosition)
         let result = 0;
         if (opcode[4] == 1) {
           result = value1 + value2;
@@ -90,24 +84,15 @@ class Amplifier {
           index = index + 2;
         } else if (opcode[4] == 4) {
           let position = opcode[2] == 0 ? this.instructions[index+1] : index + 1;
-          //console.log('output', instructions[position])
           this.output = this.instructions[position];
           this.pc = index + 2;
           return true;
         }
       }
     }
-    //return output;
-    //console.log('final instructions', instructions);
-    //return instructions[0];
-    //console.log(instructions);
   }
 }
-//const sampleInput = [4,3, 2,1,0];
-//const sampleData = [3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0];
 
-//const sampleInput = [0,1, 2,3,4];
-//const sampleData = [3,23,3,24,1002,24,10,24,1002,23,-1,23, 101,5,23,23,1,24,23,23,4,23,99,0,0];
 
 const sampleInput = [1,0,4,3,2];
 const sampleData = [3,31,3,32,1002,32,10,32,1001,31,-2,31,1007,31,0,33, 1002,33,7,33,1,33,31,31,1,32,31,31,4,31,99,0,0,0];
@@ -142,10 +127,7 @@ const calculateSignal = (data, input) => {
   let previousResult = 0;
   const amplifiers = [];
   for (let i = 0; i < input.length; i++){
-    //let inputGen = inputGenerator([input[i], previousResult]);
-    
     amplifiers.push(new Amplifier(data, [input[i]]));
-    //console.log(previousResult);
   }
   let amp = 0;
   while (resume) {
