@@ -117,8 +117,8 @@ class Panel {
 function paint(initialInput){
   // initialize everything
     const panel = new Panel([0,0], 'U');
-    let currentColor = initialInput ? initialInput : [panel.getColor()];
-    let inputs = [1];
+    let currentColor = initialInput ? initialInput : panel.getColor();
+    let inputs = [currentColor];
     const brain =  new Computer(data, inputs);
     let resume = true;
     let step = 'paint';
@@ -148,7 +148,7 @@ function paint(initialInput){
 paint();
 
 // Part 2
-paint(1);
+//paint(1);
 
 
 
