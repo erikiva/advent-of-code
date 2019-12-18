@@ -72,18 +72,14 @@ test(data, rounds, multiplier);
 // test(testInput4, rounds, multiplier);
 
 function test(data, rounds, mult) {
-  console.log(data);
+  //console.log(data);
   const offset = parseInt(data.substr(0, 7));
 
   const result = calculateFinalOutput(data, rounds, mult);
   console.log(`Offset is: ${offset}`);
   console.log(
-    `The list after ${rounds} rounds is: ${result[offset]}${
-      result[offset + 1]
-    }${result[offset + 2]}${result[offset + 3]}${result[offset + 4]}${
-      result[offset + 5]
-    }${result[offset + 6]}${result[offset + 7]} - ${result
-      .slice(offset, 8)
+    `The list after ${rounds} rounds is: ${result
+      .slice(offset, offset + 8)
       .join("")}` //${result.slice(offset, 8).join("")}
   );
 }
