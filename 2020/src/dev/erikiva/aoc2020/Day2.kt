@@ -16,7 +16,7 @@ class Password(pass: String){
     }
     fun isValid(): Boolean {
         val count = password.count { this.letter == it }
-        return count >= this.min && count <= this.max
+        return (count >= this.min) and (count <= this.max)
     }
 
     fun isValid2(): Boolean {
