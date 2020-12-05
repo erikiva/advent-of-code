@@ -41,4 +41,11 @@ class Day5 {
         }
         return 0
     }
+    fun improvedFindSeatId(input: List<String>): Int{
+        val sortedSeats = getSortedSeats(input)
+        for (seat in sortedSeats.indices) {
+            if (sortedSeats[seat + 1].id - sortedSeats[seat].id != 1) return sortedSeats[seat].id + 1
+        }
+        return 0
+    }
 }

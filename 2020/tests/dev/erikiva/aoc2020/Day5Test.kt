@@ -40,6 +40,12 @@ internal class Day5Test {
         val day5 = Day5();
         assertEquals(0, day5.findSeatId(input))
     }
+    @Test
+    fun getSeatId2(){
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day5Input.txt"))
+        val day5 = Day5();
+        assertEquals(0, day5.improvedFindSeatId(input))
+    }
 
 
 
