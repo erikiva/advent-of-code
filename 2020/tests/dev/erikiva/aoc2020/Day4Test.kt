@@ -7,7 +7,6 @@ import java.nio.file.Files
 import java.nio.file.Paths
 
 internal class Day4Test {
-    var slopes = listOf(arrayOf(1, 1), arrayOf(3, 1), arrayOf(5, 1), arrayOf(7, 1), arrayOf(1, 2))
 
     @Test
     fun validateTestPassports() {
