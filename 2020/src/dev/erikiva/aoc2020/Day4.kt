@@ -43,12 +43,12 @@ class Passport(passString: String) {
         val hgt = passports.getOrDefault("hgt", "")
         if (hgt.endsWith("cm")) {
             val cms = hgt.substringBefore("cm").toInt()
-            if (cms < 150 || cms > 193) {
+            if (cms !in 150..193) {
                 return false
             }
         } else if (hgt.endsWith("in")) {
-            val cms = hgt.substringBefore("in").toInt()
-            if (cms < 59 || cms > 76) {
+            val inc = hgt.substringBefore("in").toInt()
+            if (inc !in 59..76) {
                 return false
             }
         } else {
