@@ -40,7 +40,7 @@ internal class Day7Test {
     fun getChildrenTotal() {
         val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day7Input.txt"))
         val day7 = Day7();
-        assertEquals(0, day7.findChildrenBags(input, "shiny gold"))
+        assertEquals(89084, day7.findChildrenBags(input, "shiny gold"))
     }
 
 }
