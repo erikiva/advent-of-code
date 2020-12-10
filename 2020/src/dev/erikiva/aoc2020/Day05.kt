@@ -25,7 +25,7 @@ class Seat(seatString: String) {
     }
 }
 
-class Day5 {
+class Day05 {
     fun getSortedSeats(input: List<String>): List<Seat> {
         val seats = input.map {Seat(it)}
         return seats.sortedBy { it.id }

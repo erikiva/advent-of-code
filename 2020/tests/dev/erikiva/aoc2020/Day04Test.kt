@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Assertions.*
 import java.nio.file.Files
 import java.nio.file.Paths
 
-internal class Day4Test {
+internal class Day04Test {
 
     @Test
     fun validateTestPassports() {
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day4TestInput.txt"))
-        val day4 = Day4();
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day04TestInput.txt"))
+        val day4 = Day04();
         assertEquals(2, day4.validatePassports(input))
     }
 
@@ -31,23 +31,23 @@ internal class Day4Test {
 
     @Test
     fun validatePassports() {
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day4Input.txt"))
-        val day4 = Day4();
-        assertEquals(0, day4.validatePassports(input))
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day04Input.txt"))
+        val day4 = Day04();
+        assertEquals(233, day4.validatePassports(input))
     }
 
     @Test
     fun validatePassportsMixed() {
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day4TestInput2.txt"))
-        val day4 = Day4();
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day04TestInput2.txt"))
+        val day4 = Day04();
         assertEquals(4, day4.validatePassports2(input))
     }
 
     @Test
     fun validatePassportsFinal() {
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day4Input.txt"))
-        val day4 = Day4();
-        assertEquals(4, day4.validatePassports2(input))
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day04Input.txt"))
+        val day4 = Day04();
+        assertEquals(111, day4.validatePassports2(input))
     }
 }
 

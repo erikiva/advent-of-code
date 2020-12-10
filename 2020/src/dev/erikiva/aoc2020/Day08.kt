@@ -1,7 +1,7 @@
 package dev.erikiva.aoc2020
 
 
-class Day8 {
+class Day08 {
     fun getSolution(input: List<String>): Int {
         var value = 0
         var pcount = 0

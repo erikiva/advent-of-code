@@ -15,7 +15,7 @@ class Bag(color: String, contents: Map<String, Int>) {
 
 }
 
-class Day7 {
+class Day07 {
     fun sortRules(rules: List<String>): MutableMap<String, Bag> {
         var sorted = mutableMapOf<String, Bag>()
         for (rule in rules) {
@@ -54,7 +54,6 @@ class Day7 {
         visited.addAll(sortedBags.get(bag)!!.isContainedIn)
         while (!pending.isEmpty()) {
             val current = pending.removeAt(0)
-            println(current)
             val parents = sortedBags.get(current)!!.isContainedIn
             for (parent in parents) {
                 if (!visited.contains(parent)) {

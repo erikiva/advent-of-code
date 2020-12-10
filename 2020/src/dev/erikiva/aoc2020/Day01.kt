@@ -1,6 +1,6 @@
 package dev.erikiva.aoc2020
 
-class Day1 (){
+class Day01 (){
     fun getTwoNumbers(nums: List<Int>): Int{
         for (num1 in nums.indices) {
             for(num2 in num1 + 1 until nums.size){

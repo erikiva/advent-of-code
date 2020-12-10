@@ -1,6 +1,6 @@
 package dev.erikiva.aoc2020
 
-class Day3 {
+class Day03 {
 
     fun findTrees(forest: List<String>): Int {
         return findTreesForSlope(forest, arrayOf(3, 1))
@@ -23,7 +23,6 @@ class Day3 {
             }
             pos = getNextPos(pos, slope[0], forest[y].length)
         }
-        println(trees)
         return trees
     }
 

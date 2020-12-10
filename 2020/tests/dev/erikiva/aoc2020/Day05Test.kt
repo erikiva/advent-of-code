@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions.*
 import java.nio.file.Files
 import java.nio.file.Paths
 
-internal class Day5Test {
+internal class Day05Test {
 
     @Test
     fun validateSeat() {
@@ -24,27 +24,27 @@ internal class Day5Test {
 //        BBFFBBFRLL: row 102, column 4, seat ID 820.
 
         val input = listOf<String>("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
-        val day5 = Day5();
+        val day5 = Day05();
         assertEquals(820, day5.getHighestId(input))
     }
 
     @Test
     fun getHighestId() {
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day5Input.txt"))
-        val day5 = Day5();
-        assertEquals(0, day5.getHighestId(input))
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day05Input.txt"))
+        val day5 = Day05();
+        assertEquals(818, day5.getHighestId(input))
     }
     @Test
     fun getSeatId(){
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day5Input.txt"))
-        val day5 = Day5();
-        assertEquals(0, day5.findSeatId(input))
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day05Input.txt"))
+        val day5 = Day05();
+        assertEquals(559, day5.findSeatId(input))
     }
     @Test
     fun getSeatId2(){
-        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day5Input.txt"))
-        val day5 = Day5();
-        assertEquals(0, day5.improvedFindSeatId(input))
+        val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day05Input.txt"))
+        val day5 = Day05();
+        assertEquals(559, day5.improvedFindSeatId(input))
     }
 
 

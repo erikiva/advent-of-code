@@ -1,6 +1,6 @@
 package dev.erikiva.aoc2020
 
-class Day6 {
+class Day06 {
     fun getAnswersTotal(input: List<String>): Int {
         val answers  = convertInput(input)
         val sizes = answers.map { it.size }

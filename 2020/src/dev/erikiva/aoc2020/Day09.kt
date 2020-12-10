@@ -1,6 +1,6 @@
 package dev.erikiva.aoc2020
 
-class Day9 {
+class Day09 {
     fun getSolution(input: List<String>, size: Int): Long {
         val numbers = input.map {it.toLong()}
         val window = numbers.subList(0,size).toMutableSet()

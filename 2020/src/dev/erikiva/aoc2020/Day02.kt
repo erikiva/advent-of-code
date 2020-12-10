@@ -26,7 +26,7 @@ class Password(pass: String){
     }
 }
 
-class Day2 (){
+class Day02 (){
     fun getValidPasswords(passwrds: List<String>): Int{
         var passwrdObjects = passwrds.map {
             Password(it)

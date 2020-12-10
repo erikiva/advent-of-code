@@ -73,7 +73,7 @@ class Passport(passString: String) {
     }
 }
 
-class Day4 {
+class Day04 {
     fun validatePassports(input: List<String>): Int {
         val passports = convertInput(input)
         return passports.count { Passport(it).isValid() }
