@@ -16,9 +16,7 @@ internal class Day01Test {
     }
     @Test
     fun finalTwoNumbers(){
-        println(Paths.get("tests/dev/erikiva/aoc2020/Day01Input.txt").toAbsolutePath())
         val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day01Input.txt"))
-        println(input)
         val day1 = Day01();
         val nums = input.map { it.toInt() }
         assertEquals(1020036, day1.getTwoNumbers(nums))
