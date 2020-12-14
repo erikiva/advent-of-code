@@ -1,11 +1,6 @@
 package dev.erikiva.aoc2020
 
-import java.math.BigDecimal
 import java.math.BigInteger
-import kotlin.math.abs
-import kotlin.math.cos
-import kotlin.math.roundToInt
-import kotlin.math.sin
 
 class Day13 {
 
