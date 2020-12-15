@@ -25,7 +25,8 @@ internal class Day15Test {
         val day15 = Day15();
         assertEquals(10, day15.getSolution(input, 2020))
     }
-
+    
+    @Test
     fun getSolutionTest4() {
         val input = listOf(1,2,3)
         val day15 = Day15();
@@ -43,13 +44,13 @@ internal class Day15Test {
     fun getSolutionTestSecond() {
         val input = listOf(0,3,6)
         val day15 = Day15();
-        assertEquals(175594, day15.getSolution2(input, 30000000))
+        assertEquals(175594, day15.getSolution(input, 30000000))
     }
     @Test
     fun getSolutionFinal() {
         val input = listOf(18,8,0,5,4,1,20)
         val day15 = Day15();
-        assertEquals(13710, day15.getSolution2(input, 30000000))
+        assertEquals(13710, day15.getSolution(input, 30000000))
     }
 
 }
