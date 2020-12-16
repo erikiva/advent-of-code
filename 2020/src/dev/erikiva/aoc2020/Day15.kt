@@ -20,6 +20,7 @@ class Day15 {
                 current = i - index
             }
         }
+        println(lastSeen.keys.size)
         return current
     }
 
