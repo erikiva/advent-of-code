@@ -20,7 +20,7 @@ internal class Day19Test {
     fun getSolution() {
         val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day19Input.txt"))
         val day19 = Day19();
-        assertEquals(0, day19.getSolution(input))
+        assertEquals(173, day19.getSolution(input))
     }
 
 
@@ -29,13 +29,13 @@ internal class Day19Test {
     fun getSolutionTestFinal() {
         val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day19TestInput2.txt"))
         val day19 = Day19();
-        assertEquals(12, day19.getSolution2(input))
+        assertEquals(12, day19.getSolution2(input, 5))
     }
 
     @Test
     fun getSolutionFinal() {
         val input = Files.readAllLines(Paths.get("tests/dev/erikiva/aoc2020/Day19Input.txt"))
         val day19 = Day19();
-        assertEquals(0, day19.getSolution2(input))
+        assertEquals(367, day19.getSolution2(input, 8))
     }
 }
