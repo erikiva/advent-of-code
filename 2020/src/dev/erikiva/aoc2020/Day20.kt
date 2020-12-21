@@ -91,21 +91,6 @@ class Tile(id: Long, tile: List<String>) {
             }
             else -> throw RuntimeException("sides was $sides")
         }
-//        val ops = mapOf(
-        //"flip around y axis"
-//            Pair(listOf(0,1), { () -> flipAroundY() })
-//            Pair(listOf(1,2), "90ccw + flip around y axis"),
-//            Pair(listOf(2,3), "flip around x axis"),
-//            Pair(listOf(3,0), "diagonal flip"),
-//            Pair(listOf(1,0), "90ccw"),
-//            Pair(listOf(2,1), "180"),
-//            Pair(listOf(3,2), "90cw"),
-//            Pair(listOf(0,3), "no-op"
-//            )
-//        );
-
-        // 90ccw is diagonal flip followed by flip around x
-        // 90cw is diagonal flip followed by flip around y
     }
 
     fun realignFromTop(sides: Pair<Int, Boolean>) {
@@ -294,10 +279,6 @@ class Day20 {
 
         corner.realignTopLeft(unconnectedSides)
 
-//        println(corner.id)
-//        corner.displayTile()
-//        println()
-
         tileMatrix[0].add(corner)
 
         // rest of first row
@@ -329,21 +310,6 @@ class Day20 {
 
             row++
         }
-
-        //printMatrix(tileMatrix)
-//
-//        // third row
-//        tileMatrix.add(mutableListOf())
-//        col = 1
-//        nextTile = connectAndRealignTileBelow(tileMatrix[1][0])
-//        tileMatrix[2].add(nextTile!!)
-//        while (nextTile != null) {
-//            nextTile = connectAndReorientTileToRight(nextTile, tileMatrix[1].getOrNull(col))
-//            if (nextTile != null) tileMatrix[2].add(nextTile)
-//            col++
-//        }
-//
-//
 
         val image = createImage(tileMatrix)
         val imageTile = Tile(0L, image)
