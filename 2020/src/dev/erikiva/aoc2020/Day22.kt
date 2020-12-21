@@ -2,6 +2,10 @@ package dev.erikiva.aoc2020
 
 import java.util.*
 
+class IngredientList {
+
+}
+
 class Day21 {
 
     fun getSolution(input: List<String>): Int {
