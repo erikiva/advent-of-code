@@ -1,7 +1,5 @@
 package dev.erikiva.aoc2020
 
-import java.util.*
-
 class Player() {
     var cards: MutableList<Int>
 
