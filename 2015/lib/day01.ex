@@ -31,6 +31,8 @@ defmodule Day01 do
         ")" -> acc - 1
       end
     end
-  ) |> Enum.find_index(fn floor -> floor == -1 end) |> (fn a -> a + 1 end).()
+  )
+  |> Enum.find_index(fn floor -> floor == -1 end)
+  |> Kernel.+(1)
   end
 end
