@@ -16,7 +16,7 @@ defmodule Day04Test do
   end
 
   test "Part 2" do
-    assert Day04.part2("bgvyzdsv") == 0
+    assert Day04.part2("bgvyzdsv") == 1038736
   end
 end
 
