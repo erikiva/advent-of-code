@@ -8,13 +8,7 @@ class TestBasic(unittest.TestCase):
         with open("input.txt") as f:
             data = inventory.parse(f.readlines())
             answer = inventory.solve(data)
-            self.assertEqual(0, answer)
-
-    # def test_pass_part_two(self):
-    #     with open("input.txt") as f:
-    #         data = inventory.parse(f.readlines())
-    #         answer = inventory.repeat(data)
-    #         self.assertEqual(0, answer)
+            self.assertEqual(4940, answer)
 
     def test_basic_parse(self):
         data = inventory.parse('''abcdef
@@ -42,12 +36,21 @@ class TestBasic(unittest.TestCase):
                 'ababab']
         self.assertEqual(12, inventory.solve(data))
 
-    # def test_basic_part_two(self):
-    #     data = inventory.parse('''+1
-    # -2
-    # +3
-    # +1'''.split())
-    #     self.assertEqual(2, inventory.repeat(data))
+    def test_basic_solve2(self):
+        data = ['abcde',
+                'fghij',
+                'klmno',
+                'pqrst',
+                'fguij',
+                'axcye',
+                'wvxyz']
+        self.assertEqual('fgij', inventory.solve2(data))
+
+    def test_pass_part_two(self):
+        with open("input.txt") as f:
+            data = inventory.parse(list(line.rstrip() for line in f))
+            answer = inventory.solve2(data)
+            self.assertEqual('wrziyfdmlumeqvaatbiosngkc', answer)
 
 
 if __name__ == "__main__":
