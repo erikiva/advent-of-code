@@ -1,12 +1,12 @@
 defmodule Day08 do
 
-  def parseChars(chars) do
+  def parseChars(chars, res \\ 0) do
     case chars do
-      "" -> 0
-      "\\\"" <> _ -> 1 + parseChars(String.slice(chars, 2, 999))
-      "\\\\" <> _ -> 1 + parseChars(String.slice(chars, 2, 999))
-      "\\x" <> _ -> 1 + parseChars(String.slice(chars, 4, 999))
-      _ -> 1 + parseChars(String.slice(chars, 1, 999))
+      "" -> res
+      "\\\"" <> _ -> parseChars(String.slice(chars, 2, 999), res + 1)
+      "\\\\" <> _ -> parseChars(String.slice(chars, 2, 999), res + 1)
+      "\\x" <> _ -> parseChars(String.slice(chars, 4, 999), res + 1)
+      _ -> parseChars(String.slice(chars, 1, 999), res + 1)
     end
   end
 
@@ -23,12 +23,12 @@ defmodule Day08 do
   end
 
 
-  def parseEncoding(chars) do
+  def parseEncoding(chars, res \\ 0) do
     case chars do
-      "" -> 2
-      "\"" <> _ -> 2 + parseEncoding(String.slice(chars,1, 999))
-      "\\" <> _ -> 2 + parseEncoding(String.slice(chars, 1, 999))
-      _ -> 1 + parseEncoding(String.slice(chars, 1, 999))
+      "" -> res + 2
+      "\"" <> _ -> parseEncoding(String.slice(chars,1, 999), res + 2)
+      "\\" <> _ -> parseEncoding(String.slice(chars, 1, 999), res + 2)
+      _ -> parseEncoding(String.slice(chars, 1, 999), res + 1)
     end
   end
 
