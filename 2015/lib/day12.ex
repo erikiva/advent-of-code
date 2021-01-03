@@ -20,28 +20,17 @@ defmodule Day12 do
     end)
   end
 
-def simplifyLoop(input) do
-  Stream.unfold(input, fn str ->
-    if String.contains?(str, ":\"red") do
+  def simplifyLoop(str) do
+    if  String.contains?(str, ":\"red") do
       simplified = simplify(str)
-      # |> IO.inspect(label: "Stream")
-      {simplified,simplified }
+      simplifyLoop(simplified)
     else
-      nil
+      str
     end
-  end)
-  |> Enum.to_list()
-  # |> IO.inspect(label: "After Stream")
-  |> List.last()
-end
+  end
 
   def part2(input) do
-    # IO.inspect(input, label: "case")
-    if String.contains?(input, ":\"red") do
-      simplifyLoop(input)
-    else
-      input
-    end
+    simplifyLoop(input)
     |> calculate()
     # |> IO.inspect(label: "Final")
   end
