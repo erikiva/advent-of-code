@@ -29,27 +29,6 @@ func processIntcode(instructions []int) int {
 	return instructions[0]
 }
 
-func Part1(input string) int {
-	content, err := ioutil.ReadFile(input)
-	if err != nil {
-		log.Fatal(err)
-	}
-	str_instructions := strings.Split(string(content), ",")
-	var instructions = make([]int, len(str_instructions))
-
-	for idx, i := range str_instructions {
-		j, err := strconv.Atoi(i)
-		if err != nil {
-			panic(err)
-		}
-		instructions[idx] = j
-	}
-	instructions[1] = 12
-	instructions[2] = 2
-
-	return processIntcode(instructions)
-}
-
 func getInstructions(input string) []int {
 	content, err := ioutil.ReadFile(input)
 	if err != nil {
@@ -66,6 +45,14 @@ func getInstructions(input string) []int {
 		instructions[idx] = j
 	}
 	return instructions
+}
+
+func Part1(input string) int {
+	instructions := getInstructions(input)
+	instructions[1] = 12
+	instructions[2] = 2
+
+	return processIntcode(instructions)
 }
 
 func Part2(input string) int {
