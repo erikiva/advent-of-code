@@ -5,4 +5,5 @@ My solution to Advent of Code problems
 * 2017 (in progress) - Ruby
 * 2018 (in progress) - Python
 * 2019 (completed) - JS
+* 2019 (in progress) - Go
 * 2020 (completed) - Kotlin
