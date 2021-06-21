@@ -37,29 +37,32 @@ func processInstructions(instructions []int, input int) int {
 	for instructions[pc] != 99 {
 		instruction := decodeInstruction(instructions[pc])
 		switch instruction.opcode {
+		// addition
 		case 1:
 			{
 
 				instructions[instructions[pc+3]] = getValue(instructions, instruction.first, instructions[pc+1]) + getValue(instructions, instruction.second, instructions[pc+2])
-				// instructions[instructions[pc+1]] + instructions[instructions[pc+2]]
 				pc += 4
 			}
+			// multiplication
 		case 2:
 			{
 				instructions[instructions[pc+3]] = getValue(instructions, instruction.first, instructions[pc+1]) * getValue(instructions, instruction.second, instructions[pc+2])
-				//instructions[instructions[pc+3]] = instructions[instructions[pc+1]] * instructions[instructions[pc+2]]
 				pc += 4
 			}
+			// input
 		case 3:
 			{
 				instructions[instructions[pc+1]] = input
 				pc += 2
 			}
+			// output
 		case 4:
 			{
 				output = getValue(instructions, instruction.first, instructions[pc+1])
 				pc += 2
 			}
+			// jump-if-true
 		case 5:
 			{
 				first := getValue(instructions, instruction.first, instructions[pc+1])
@@ -70,6 +73,7 @@ func processInstructions(instructions []int, input int) int {
 					pc += 3
 				}
 			}
+			// jump-if-false
 		case 6:
 			{
 				first := getValue(instructions, instruction.first, instructions[pc+1])
@@ -80,6 +84,7 @@ func processInstructions(instructions []int, input int) int {
 					pc += 3
 				}
 			}
+			// less than
 		case 7:
 			{
 				first := getValue(instructions, instruction.first, instructions[pc+1])
@@ -91,6 +96,7 @@ func processInstructions(instructions []int, input int) int {
 				}
 				pc += 4
 			}
+			// equals
 		case 8:
 			{
 				first := getValue(instructions, instruction.first, instructions[pc+1])
