@@ -44,10 +44,12 @@ pub fn solve_part1(bingo: &Bingo) -> i32 {
             boards[b].cols_done[c] += 1;
           }
           if boards[b].rows_done[r] == 5 || boards[b].cols_done[c] == 5 {
-            return  boards[b].rows
-              .iter()
-              .map(|r| r.iter().filter(|c| **c != -1i32).sum::<i32>())
-              .sum::<i32>() * moves[n];
+            return  moves[n] * boards[b].rows
+                .clone()
+                .into_iter()
+                .flatten()
+                .filter(|c| *c != -1i32)
+                .sum::<i32>();
           }
         }
       }
@@ -75,9 +77,12 @@ pub fn solve_part2(bingo: &Bingo) -> i32 {
             boards[b].cols_done[c] += 1;
             if boards[b].rows_done[r] == 5 || boards[b].cols_done[c] == 5 {
               boards[b].winner = true;
-              score = boards[b].rows.iter()
-                .map(|r| r.iter().filter(|c| **c != -1i32).sum::<i32>())
-                .sum::<i32>() * moves[n];
+              score = moves[n] * boards[b].rows
+                .clone()
+                .into_iter()
+                .flatten()
+                .filter(|c| *c != -1i32)
+                .sum::<i32>();
             }
           }
         }
