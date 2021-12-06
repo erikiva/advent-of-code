@@ -18,7 +18,6 @@ pub fn apply_day(fish_list: &Vec<i32>) -> Vec<i32> {
 
 #[aoc(day6, part1)]
 pub fn solve_part1(fish: &Vec<i32>) -> usize {
-  println!("{:?}", fish);
   let mut fish_list = fish.clone();
 
   for _ in 0..80 {
@@ -34,15 +33,11 @@ pub fn solve_part2(fish_list: &Vec<i32>) -> u64 {
     list[fish as usize] = list[fish as usize] + 1;
   }
   for _ in  0..256 {
-    let mut zeroes = list[0];
-    list[0] = list[1];
-    list[1] = list[2];
-    list[2] = list[3];
-    list[3] = list[4];
-    list[4] = list[5];
-    list[5] = list[6];
-    list[6] = list[7] + zeroes;
-    list[7] = list[8];
+    let zeroes = list[0];
+    for i in 0..8 {
+      list[i] = list[i + 1];
+    }
+    list[6] += zeroes;
     list[8] = zeroes;
   }
   return list.iter().sum();
