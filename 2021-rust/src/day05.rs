@@ -57,7 +57,8 @@ pub fn solve_part1(vent_lines: &Vec<Line>) -> i32 {
   let mut crosings: HashMap<Point, i32> = HashMap::new();
   for line in vent_lines {
     if line.is_horizontal() {
-      let range = if line.start.x > line.end.x {(line.end.x..=line.start.x)} else {(line.start.x..=line.end.x)};
+      let range = if line.start.x > line.end.x {line.end.x..=line.start.x}
+            else {line.start.x..=line.end.x};
       for i in range {
         let point = Point{x:i, y: line.start.y};
         if let Some(&cross_point) = crosings.get(&point) {
@@ -72,8 +73,8 @@ pub fn solve_part1(vent_lines: &Vec<Line>) -> i32 {
       }
     }
     if line.is_vertical() {
-      let range = if line.start.y > line.end.y {(line.end.y..=line.start.y)}
-          else {(line.start.y..=line.end.y)};
+      let range = if line.start.y > line.end.y {line.end.y..=line.start.y}
+          else {line.start.y..=line.end.y};
       for i in range {
         let point = Point{y:i, x: line.start.x};
         if let Some(&cross_point) = crosings.get(&point) {
@@ -98,8 +99,8 @@ pub fn solve_part2(vent_lines: &Vec<Line>) -> i32 {
   let mut crosings: HashMap<Point, i32> = HashMap::new();
   for line in vent_lines {
     if line.is_horizontal() {
-      let range = if line.start.x > line.end.x { (line.end.x..=line.start.x) }
-              else { (line.start.x..=line.end.x) };
+      let range = if line.start.x > line.end.x { line.end.x..=line.start.x }
+              else { line.start.x..=line.end.x};
       println!("Horizontal {:?} - {:?}", line.start, line.end);
       for i in range {
         let point = Point{x:i, y: line.start.y};
@@ -115,8 +116,8 @@ pub fn solve_part2(vent_lines: &Vec<Line>) -> i32 {
       }
     }
     if line.is_vertical() {
-      let range = if line.start.y > line.end.y {(line.end.y..=line.start.y)}
-          else {(line.start.y..=line.end.y)};
+      let range = if line.start.y > line.end.y {line.end.y..=line.start.y}
+          else {line.start.y..=line.end.y};
           println!("Vertical {:?} - {:?}", line.start, line.end);
       for i in range {
         let point = Point{y:i, x: line.start.x};
