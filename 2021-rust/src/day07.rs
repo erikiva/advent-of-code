@@ -9,7 +9,7 @@ pub fn input_generator(input: &str) -> Vec<i32> {
 #[aoc(day7, part1)]
 pub fn solve_part1(crab_positions: &Vec<i32>) -> i32 {
 
-  let mut min:i32 = 999999999;
+  let mut min:i32 = i32::MAX;
   let &highest = crab_positions.iter().max().unwrap();
 
   for position in 0..=highest {
@@ -26,7 +26,7 @@ pub fn solve_part1(crab_positions: &Vec<i32>) -> i32 {
 
 #[aoc(day7, part2)]
 pub fn solve_part2(crab_positions: &Vec<i32>) -> i32 {
-  let mut min:i32 = 999999999;
+  let mut min:i32 = i32::MAX;
   let &highest = crab_positions.iter().max().unwrap();
   for position in 0..=highest {
     let mut cost: i32 = 0;
