@@ -1,0 +1,27 @@
+{
+  "name": "aoc",
+  "version": "1.0.0",
+  "description": "Solutions for Advent of Code",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erikiva/advent-of-code-2019.git"
+  },
+  "keywords": [
+    "adventofcode",
+    "aoc",
+    "javascript"
+  ],
+  "author": "Natalia Vidal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/erikiva/advent-of-code-2019/issues"
+  },
+  "homepage": "https://github.com/erikiva/advent-of-code-2019#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
