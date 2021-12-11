@@ -5,6 +5,7 @@ import (
 	"log"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func calculateFuel(mass int) int {
@@ -14,6 +15,17 @@ func calculateFuel(mass int) int {
 		return amount
 	}
 
+}
+
+func calculateTotalFuelPar(mass int, ch chan int) {
+	fuel := calculateFuel(mass)
+	totalFuel := fuel
+	time.Sleep(10 * time.Millisecond)
+	for fuel > 0 {
+		fuel = calculateFuel(fuel)
+		totalFuel += fuel
+	}
+	ch <- totalFuel
 }
 
 func calculateTotalFuel(mass int) int {
@@ -51,13 +63,18 @@ func Part2(input string) int {
 	}
 	totalMass := 0
 	data := strings.Split(string(content), "\n")
+	ch := make(chan int)
 	for _, mass := range data {
 		massInt, err := strconv.Atoi(mass)
 		if err != nil {
 			log.Fatal(err)
 		} else {
-			totalMass += calculateTotalFuel(massInt)
+			go calculateTotalFuelPar(massInt, ch)
 		}
+		time.Sleep(10 * time.Millisecond)
+	}
+	for i := 0; i < len(data); i++ {
+		totalMass += <-ch
 	}
 	return totalMass
 }
