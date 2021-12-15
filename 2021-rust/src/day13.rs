@@ -77,7 +77,7 @@ pub fn print_map(map: &Map) {
 #[aoc(day13, part1)]
 pub fn solve_part1(input: &(Map, Vec<Fold>)) -> usize {
   let mut map = input.0.clone();
-  let mut folds = input.1.clone();
+  let folds = input.1.clone();
   // print_map(&map);
   let fold = folds.first().unwrap();
 
@@ -115,9 +115,9 @@ pub fn solve_part1(input: &(Map, Vec<Fold>)) -> usize {
 #[aoc(day13, part2)]
 pub fn solve_part2(input: &(Map, Vec<Fold>)) -> usize {
   let mut map = input.0.clone();
-  let mut folds = input.1.clone();
+  let folds = input.1.clone();
   // print_map(&map);
-  let fold = folds.first().unwrap();
+
   for fold in folds {
     if fold.direction == 'x' {
       for r in 0..=map.height {
