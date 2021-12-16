@@ -70,7 +70,6 @@ pub fn solve_part1(risk_map: &Vec<Vec<u32>>) -> u32 {
 
   while let Some(current) = queue.pop() {
     if (current.position.0 as usize, current.position.1 as usize) == end {
-      // add to completed paths
       return current.value;
     }
     if let Some(_) = visited.get(&current.position) {
