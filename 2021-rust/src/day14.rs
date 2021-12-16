@@ -86,7 +86,7 @@ pub fn solve_part2(input: &(Vec<char>, HashMap<(char, char), char>)) -> u64 {
 
   // println!("Pairs: {:?} \n\t\t Letters: {:?} \n", pairs, letters);
 
-  for i in 0..40 {
+  for _ in 0..40 {
     let mut new: HashMap<(char, char), u64> = HashMap::new();
 
     for (pair, count) in pairs.clone() {
