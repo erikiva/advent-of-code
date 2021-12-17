@@ -3,9 +3,9 @@ use std::collections::HashMap;
 #[derive(Clone, Debug)]
 pub struct Packet {
   version: u32,
-  typeId: u32,
-  subPackets: Vec<usize>,
-  lengthTypeId: u32,
+  type_id: u32,
+  sub_packets: Vec<usize>,
+  length_type_id: u32,
   value: u64,
 }
 
@@ -54,25 +54,21 @@ pub fn input_generator(input: &str) -> Vec<u32> {
   return code;
 }
 
-// Returns a package and the new pointer position
 pub fn process_packet(
   code: &[u32],
   global_pc: usize,
   instructions: &mut HashMap<usize, Packet>,
 ) -> usize {
   let mut pc = 0;
-  let mut version: u32 = 0;
-  let mut typeId: u32 = 0;
-  let mut lengthTypeId: u32 = 0;
+  let mut length_type_id: u32 = 0;
   let mut value: u64 = 0;
-  let mut subpacketValue: usize = 0;
-  let mut subPackets: Vec<usize> = vec![];
+  let mut sub_packets: Vec<usize> = vec![];
 
-  version = to_dec(&code[pc..pc + 3]);
+  let version = to_dec(&code[pc..pc + 3]);
   pc += 3;
-  typeId = to_dec(&code[pc..pc + 3]);
+  let type_id = to_dec(&code[pc..pc + 3]);
   pc += 3;
-  if typeId == 4 {
+  if type_id == 4 {
     let mut literal: Vec<u32> = vec![];
     loop {
       let lead = code[pc];
@@ -85,23 +81,23 @@ pub fn process_packet(
     }
     value = to_big_dec(&literal);
   } else {
-    lengthTypeId = code[pc];
+    length_type_id = code[pc];
 
     pc += 1;
-    if lengthTypeId == 0 {
-      subpacketValue = to_dec(&code[pc..pc + 15]) as usize;
+    if length_type_id == 0 {
+      let mut sub_packet_value = to_dec(&code[pc..pc + 15]) as usize;
       pc += 15;
-      while subpacketValue > 0 {
-        subPackets.push(global_pc + pc);
+      while sub_packet_value > 0 {
+        sub_packets.push(global_pc + pc);
         let read = process_packet(&code[pc..], global_pc + pc, instructions);
         pc += read;
-        subpacketValue -= read;
+        sub_packet_value -= read;
       }
     } else {
-      subpacketValue = to_dec(&code[pc..pc + 11]) as usize;
+      let sub_packet_value = to_dec(&code[pc..pc + 11]) as usize;
       pc += 11;
-      for _ in 0..subpacketValue {
-        subPackets.push(global_pc + pc);
+      for _ in 0..sub_packet_value {
+        sub_packets.push(global_pc + pc);
         let read = process_packet(&code[pc..], global_pc + pc, instructions);
         pc += read;
       }
@@ -110,10 +106,10 @@ pub fn process_packet(
 
   let packet = Packet {
     version,
-    typeId,
-    subPackets,
+    type_id,
+    sub_packets,
     value,
-    lengthTypeId,
+    length_type_id,
   };
 
   instructions.insert(global_pc, packet);
@@ -123,11 +119,11 @@ pub fn process_packet(
 
 pub fn add_versions(instructions: &HashMap<usize, Packet>, packet_key: usize) -> u32 {
   if let Some(packet) = instructions.get(&packet_key) {
-    if packet.subPackets.len() == 0 {
+    if packet.sub_packets.len() == 0 {
       return packet.version;
     } else {
       let mut subversion = 0;
-      for sub in &packet.subPackets {
+      for sub in &packet.sub_packets {
         subversion += add_versions(instructions, *sub as usize);
       }
       return packet.version + subversion;
@@ -141,31 +137,29 @@ pub fn solve_part1(code: &Vec<u32>) -> u32 {
   let mut instructions: HashMap<usize, Packet> = HashMap::new();
   process_packet(&code[..], 0, &mut instructions);
 
-  // println!("Instructions: {:?}", instructions);
-
   add_versions(&instructions, 0)
 }
 
 pub fn process_instructions(instructions: &HashMap<usize, Packet>, packet_key: usize) -> u128 {
   if let Some(packet) = instructions.get(&packet_key) {
-    match packet.typeId {
+    match packet.type_id {
       0 => {
         let mut sum = 0;
-        for sub in &packet.subPackets {
+        for sub in &packet.sub_packets {
           sum += process_instructions(instructions, *sub as usize);
         }
         return sum;
       }
       1 => {
         let mut prod = 1;
-        for sub in &packet.subPackets {
+        for sub in &packet.sub_packets {
           prod *= process_instructions(instructions, *sub as usize);
         }
         return prod;
       }
       2 => {
         let mut min = u128::MAX;
-        for sub in &packet.subPackets {
+        for sub in &packet.sub_packets {
           let new_val = process_instructions(instructions, *sub as usize);
           if new_val < min {
             min = new_val;
@@ -175,7 +169,7 @@ pub fn process_instructions(instructions: &HashMap<usize, Packet>, packet_key: u
       }
       3 => {
         let mut max = 0;
-        for sub in &packet.subPackets {
+        for sub in &packet.sub_packets {
           let new_val = process_instructions(instructions, *sub as usize);
           if new_val > max {
             max = new_val;
@@ -187,27 +181,26 @@ pub fn process_instructions(instructions: &HashMap<usize, Packet>, packet_key: u
         return packet.value as u128;
       }
       5 => {
-        let val1 = process_instructions(instructions, packet.subPackets[0]);
-        let val2 = process_instructions(instructions, packet.subPackets[1]);
+        let val1 = process_instructions(instructions, packet.sub_packets[0]);
+        let val2 = process_instructions(instructions, packet.sub_packets[1]);
         return if val1 > val2 { 1 } else { 0 };
       }
       6 => {
-        let val1 = process_instructions(instructions, packet.subPackets[0]);
-        let val2 = process_instructions(instructions, packet.subPackets[1]);
+        let val1 = process_instructions(instructions, packet.sub_packets[0]);
+        let val2 = process_instructions(instructions, packet.sub_packets[1]);
         return if val1 < val2 { 1 } else { 0 };
       }
       7 => {
-        let val1 = process_instructions(instructions, packet.subPackets[0]);
-        let val2 = process_instructions(instructions, packet.subPackets[1]);
+        let val1 = process_instructions(instructions, packet.sub_packets[0]);
+        let val2 = process_instructions(instructions, packet.sub_packets[1]);
         return if val1 == val2 { 1 } else { 0 };
       }
-      N => {
-        panic!("WTF {}.", N);
-        return 0;
+      n => {
+        panic!("You should not be here {}.", n);
       }
     }
   }
-  panic!("kljdklfjsdkljklsjdgkljasdg lkjdklsjDGKLJldk");
+  panic!("You should not be here");
 }
 
 #[aoc(day16, part2)]
