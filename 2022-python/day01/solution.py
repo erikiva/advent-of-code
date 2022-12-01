@@ -1,9 +1,3 @@
-def parse(lines):
-    ans = []
-    for line in lines:
-        ans.append(int(line))
-    return ans
-
 
 def part1(data):
     max = 0
