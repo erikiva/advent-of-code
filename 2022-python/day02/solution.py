@@ -36,10 +36,8 @@ def convert_to_move(data):
 
 def part1(data):
     moves = list(map(convert_to_move, data))
-    total = 0
-    for round in moves:
-        total = total + score_for_round(round)
-    return total
+    scores = map(score_for_round, moves)
+    return sum(scores)
 
 
 WinnerMoves = {
@@ -56,8 +54,6 @@ def convert_to_winning_moves(data):
 
 
 def part2(data):
-    moves = list(map(convert_to_winning_moves, data))
-    total = 0
-    for round in moves:
-        total = total + score_for_round(round)
-    return total
+    moves = map(convert_to_winning_moves, data)
+    scores = map(score_for_round, moves)
+    return sum(scores)
