@@ -26,7 +26,6 @@ def score_for_round(round):
         score = 6 + Moves[round.Me]
     else:
         score = Moves[round.Me]
-    print("\nScoring ", round, " = ", score)
     return score
 
 
@@ -37,10 +36,8 @@ def convert_to_move(data):
 
 def part1(data):
     moves = list(map(convert_to_move, data))
-    print(moves, "\n")
     total = 0
     for round in moves:
-        print(round)
         total = total + score_for_round(round)
     return total
 
@@ -53,7 +50,6 @@ WinnerMoves = {
 
 
 def convert_to_winning_moves(data):
-    print(data)
     x, y = data.split(" ")
     elf = Conversions[x]
     return Round(elf, WinnerMoves[elf][y])
