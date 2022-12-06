@@ -48,7 +48,7 @@ class TestBasic(unittest.TestCase):
                   3: ['P'], }
         self.assertEqual("MCD", solution.part2(data, TEST_STACKS))
 
-    def test_pass_part2(self):
+    def test_part2(self):
         with open("input.txt") as f:
             data = f.read().strip()
             answer = solution.part2(data, REAL_STACKS)
