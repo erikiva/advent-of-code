@@ -1,3 +1,4 @@
+import copy
 import unittest
 import solution
 
@@ -33,12 +34,13 @@ class TestBasic(unittest.TestCase):
 
     def test_basic_part1(self):
         data = TEST_CASE.strip()
-        self.assertEqual("CMZ", solution.part1(data, TEST_STACKS))
+        self.assertEqual("CMZ", solution.part1(
+            data, copy.deepcopy(TEST_STACKS)))
 
     def test_part1(self):
         with open("input.txt") as f:
             data = f.read().strip()
-            answer = solution.part1(data, REAL_STACKS)
+            answer = solution.part1(data, copy.deepcopy(REAL_STACKS))
             self.assertEqual("LJSVLTWQM", answer)
 
     def test_basic_part2(self):
@@ -46,12 +48,13 @@ class TestBasic(unittest.TestCase):
         stacks = {1: ['Z', "N"],
                   2: ['M', "C", "D"],
                   3: ['P'], }
-        self.assertEqual("MCD", solution.part2(data, TEST_STACKS))
+        self.assertEqual("MCD", solution.part2(
+            data, copy.deepcopy(TEST_STACKS)))
 
     def test_part2(self):
         with open("input.txt") as f:
             data = f.read().strip()
-            answer = solution.part2(data, REAL_STACKS)
+            answer = solution.part2(data, copy.deepcopy(REAL_STACKS))
             self.assertEqual("BRQWDBBJM", answer)
 
 

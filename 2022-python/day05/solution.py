@@ -54,7 +54,6 @@ def part2(data, stacks):
     for move in moves:
         to_move = []
         for i in range(move[0]):
-            print(stacks, move[1])
             thing_to_move = stacks[move[1]].pop()
             to_move.append(thing_to_move)
         to_move.reverse()
