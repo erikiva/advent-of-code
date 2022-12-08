@@ -47,7 +47,7 @@ class TestBasic(unittest.TestCase):
         with open("input.txt") as f:
             data = f.read().strip().split('\n')
             answer = solution.part2(data)
-            self.assertEqual(0, answer)
+            self.assertEqual(3866390, answer)
 
 
 if __name__ == "__main__":
