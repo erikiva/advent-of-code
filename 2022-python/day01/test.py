@@ -33,7 +33,7 @@ class TestBasic(unittest.TestCase):
         data = solution.part2(TEST_CASE.strip())
         self.assertEqual(45000, data)
 
-    def test_pass_part2(self):
+    def test_part2(self):
         with open("input.txt") as f:
             data = f.read().strip()
             answer = solution.part2(data)

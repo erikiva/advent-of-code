@@ -30,7 +30,7 @@ class TestBasic(unittest.TestCase):
         data = TEST_CASE.strip().split('\n')
         self.assertEqual(70, solution.part2(data))
 
-    def test_pass_part2(self):
+    def test_part2(self):
         with open("input.txt") as f:
             data = f.read().strip().split('\n')
             answer = solution.part2(data)

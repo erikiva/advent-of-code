@@ -30,7 +30,7 @@ class TestBasic(unittest.TestCase):
         self.assertEqual(29, solution.part_both(TEST_CASE[3], length))
         self.assertEqual(26, solution.part_both(TEST_CASE[4], length))
 
-    def test_pass_part2(self):
+    def test_part2(self):
         length = 14
         with open("input.txt") as f:
             data = f.read().strip()
