@@ -46,7 +46,7 @@ def print_drawing(drawing):
 def part2(data):
     row = 0
     col = 0
-    drawing = [["." for _ in range(40)] for _ in range(6)]
+    drawing = [[" " for _ in range(40)] for _ in range(6)]
     cycle = 1
     cpu_X = 1
     for instruction in data:
@@ -56,7 +56,7 @@ def part2(data):
                 row += 1
                 col = 0
             if in_sprite(cpu_X, col):
-                drawing[row][col] = "#"
+                drawing[row][col] = "◼️"
             cycle += 1
             col += 1
         elif command == "addx":
@@ -64,14 +64,14 @@ def part2(data):
                 row += 1
                 col = 0
             if in_sprite(cpu_X, col):
-                drawing[row][col] = "#"
+                drawing[row][col] = "◼️"
             cycle += 1
             col += 1
             if col == 40:
                 row += 1
                 col = 0
             if in_sprite(cpu_X, col):
-                drawing[row][col] = "#"
+                drawing[row][col] = "◼️"
             cycle += 1
             col += 1
             cpu_X += amount
