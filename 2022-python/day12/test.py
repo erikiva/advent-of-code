@@ -28,7 +28,7 @@ class TestBasic(unittest.TestCase):
         with open("input.txt") as f:
             data = f.read().strip().split('\n')
             answer = solution.part1(data)
-            self.assertEqual(0, answer)
+            self.assertEqual(352, answer)
 
     def test_basic_part2(self):
         data = TEST_CASE.strip().split('\n')
@@ -38,7 +38,7 @@ class TestBasic(unittest.TestCase):
         with open("input.txt") as f:
             data = f.read().strip().split('\n')
             answer = solution.part2(data)
-            self.assertEqual(245, answer)
+            self.assertEqual(345, answer)
 
 
 if __name__ == "__main__":
