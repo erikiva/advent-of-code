@@ -14,8 +14,8 @@ def is_ordered(left, right):
         return right - left
     elif isinstance(left, list) and isinstance(right, list):
         for pair in zip(left, right):
-            if pair[0] == pair[1]:
-                continue
+            # if pair[0] == pair[1]:
+            #     continue
             ord = is_ordered(*pair)
             if ord != 0:
                 return ord
