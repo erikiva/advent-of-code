@@ -53,8 +53,6 @@ def get_elf_positions(data):
         for x in range(len(elf_layout[y])):
             if elf_layout[y][x] == "#":
                 elfs[Point(x, y)] = True
-    # print(elfs)
-    # print("\n\n")
     return elfs
 
 
